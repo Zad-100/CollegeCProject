@@ -13,8 +13,8 @@ struct play {
 };
 
 void highScore( void ); // function prototype
-void start( void );
-void help( void );
+void startGame( void );
+void gameHelp( void );
 
 int main( void )
 {
@@ -24,16 +24,20 @@ int main( void )
 
    printf( "%s", "\n\n\t\tACTION MENU\n" );
    printf( "%s", "\t\t-----------\n" );
-   printf( "%s", ">> Press \'1\'  to START the game." ); // prompt
-   printf( "%s", ">> Press \'2\'  to see HIGH SCORES of the game." );
-   printf( "%s", ">> Press \'3\'  to see the game HELP." );
+   printf( "%s", ">> Press \'1\'  to START the game.\n" ); // prompt
+   printf( "%s", ">> Press \'2\'  to see HIGH SCORES of the game.\n" );
+   printf( "%s", ">> Press \'3\'  to see the game HELP.\n" );
 
+   printf( "%s", "\n\nI STRONGLY RECOMMEND TO GO FOR THE HELP OPTION FIRST SO THAT\n" );
+   printf( "%s", "YOU ARE THOROUGH WITH THE GAME RULES AND INSTRUCTIONS.\n" );
+
+   printf( "%s", "\nEnter your choice :  " );
    scanf( "%u", &action ); // read the input from the user
 
    switch( action )
    {
       case 1 :
-         start( );
+         startGame( );
       break;
 
       case 2 :
@@ -41,7 +45,7 @@ int main( void )
       break;
 
       case 3 :
-         help( );
+         gameHelp( );
       break;
 
       default :
@@ -53,9 +57,9 @@ int main( void )
 } // end function main
 
 // User - defined function definition
-void help( void )
+void gameHelp( void )
 {
-   int actionChoice;
+   unsigned int actionChoice;
 
    printf( "%s", "\n\n********************---GAME HELP---********************" );
    printf( "%s", "\n\n--------------------***************--------------------\n" );
@@ -64,4 +68,38 @@ void help( void )
    printf( "%s", "and there will be just one and only one correct option for each\nof the 5 questions" );
    printf( "%s", "~ The options will be numbered from \'1\' to \'4\'\n" );
    printf( "%s", "~ You have to enter the corresponding number of the option that\nyou think is correct\n" );
+   printf( "%s", "~ Each question carries only 4 points.\nThere is no negative marking.\n" );
+   printf( "%s", "~ You will be asked the questions continuously.\n" );
+   
+   printf( "%s", "\n\n\t\t\t  BEST OF LUCK!!!\n" );
+
+   printf( "%s", "\nTO CONTINUE TO THE QUIZ, PRESS \'1\'\n" );
+   printf( "%s", "TO EXIT THE PROGRAM, PRESS \'0\'" );
+   printf( "%s", "\n\nSo, GAME ON?\n" );
+   scanf( "%u", &actionChoice );
+
+   if( actionChoice == 1 ) {
+      printf( "%s", "\nYEAH! I KNEW YOU WOULD BE UP FOR THE CHALLENGE!\nHAPPY QUIZ!\n" );
+      startGame( );
+   }
+   else
+   {
+      printf( "%s", "\nOkay, bye!\nBut you should have tried this once!\n" );
+      exit( 1 );
+   }
+}
+
+void startGame( void )
+{
+   unsigned int answer;
+   unsigned int count = 0; // initialized to zero
+
+   FILE *fp;
+
+   if( ( fp = fopen( "score.txt", "a" ) ) = NULL ) {
+      printf( "%s", "\nError in opening the file.\n" );
+   }
+
+   printf( "%s", "\n\nPlease, enter your name ( max 20 charaters including spaces ) :  " );
+   scanf( "%s", p.name );
 }
