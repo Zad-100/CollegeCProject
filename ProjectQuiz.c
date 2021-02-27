@@ -93,6 +93,9 @@ void startGame( void )
 {
    unsigned int answer;
    unsigned int count = 0; // initialized to zero
+   unsigned int questionCount = 0;
+   unsigned int toReset;
+   unsigned int topicChoice;
 
    FILE *fp;
 
@@ -103,6 +106,21 @@ void startGame( void )
    printf( "%s", "\n\nPlease, enter your name ( max 20 charaters including spaces ) :  " );
    scanf( "%s", p.name );
 
+   printf( "%s", "\n\nBelow are the topics to choose from.\n" );
+   printf( "%s", "# 1 ~~ Science and Technology\n" );
+   printf( "%s", "# 2 ~~ Sports and Games\n" );
+   printf( "%s", "# 3 ~~ Mythologies\n" );
+   printf( "%s", "# 4 ~~ Entertainment, Movies and Cinema\n" );
+   printf( "%s", "# 5 ~~ Current Affairs\n" );
+   printf( "%s", "\nEnter the number corresponding to the topic you want the quiz on :  " );
+   scanf( "%u", &topicChoice );
+
+   switch( topicChoice )
+   {
+      case 1 :
+         
+   }
+
    // Counting the number of correct answers
    printf( "%s", "\n\nThank you so much for playing\n" );
    printf( "Your score is %u points!\n\n", ( count * 5 ) );
@@ -112,6 +130,21 @@ void startGame( void )
    // Writting to the file
    fprintf( fp, "%s %d", p.name, p.score );
    fclose( fp );
+
+   // Resetting the game for other players
+   printf( "%s", "\n\nTo play again, press \'1\' and to exit, press \'0\'\n" );
+   scanf( "%u", &toReset );
+
+   if( toReset == 1 ) {
+      printf( "%s", "\n\nLet's Play, Again!" );
+      startGame( );
+   }
+   else
+   {
+      printf( "%s", "\n\nOkay, bye!\nHave ha brilliant day ahead!\n\n" );
+      exit( 1 );
+   }
+
 }
 
 void highScore( void )
