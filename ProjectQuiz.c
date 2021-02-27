@@ -110,6 +110,44 @@ void startGame( void )
    p.score = ( count * 5 );
 
    // Writting to the file
-   fprintf( fp, "%20s --> %4d", p.name, p.score );
+   fprintf( fp, "%s %d", p.name, p.score );
    fclose( fp );
+}
+
+void highScore( void )
+{
+   unsigned int nextChoice;
+
+   FILE *fp;
+
+   if( ( fp = fopen( "score.txt", "r" ) ) == NULL ) {
+      printf( "%s", "\n\nError opening the file\n\n" );
+   }
+   else
+   {
+      printf( "%s", "\n\n\t\t\tHigh Scores\n\n" );
+      printf( "%s", "<NAME>   -->   <POINTS>\n" );
+
+      while( fscanf( fp, "%s %d", p.name, &p.score ) != EOF ) {
+         printf( "%s", "------------------------------------------------\n" );
+         printf( "%20s   -->   %4d\n", p.name, p.score );
+      }
+
+      fclose( fp );
+   }
+
+   printf( "%s", "\nTO CONTINUE TO THE QUIZ, PRESS \'1\'\n" );
+   printf( "%s", "TO EXIT THE PROGRAM, PRESS \'0\'" );
+   printf( "%s", "\n\nSo, wnat to feature on the LEADERBOARD?\n" );
+   scanf( "%u", &nextChoice );
+
+   if( nextChoice == 1 ) {
+      printf( "%s", "\nSEE YOU ON THE LEADERBOARD!\nHAPPY QUIZ!\n" );
+      startGame( );
+   }
+   else
+   {
+      printf( "%s", "\nOkay, bye!\nBut wouldn't your name on the leaderboard look cool??\n" );
+      exit( 1 );
+   }
 }
