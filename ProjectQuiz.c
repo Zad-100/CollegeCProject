@@ -93,7 +93,6 @@ void startGame( void )
 {
    unsigned int answer;
    unsigned int count = 0; // initialized to zero
-   unsigned int questionCount = 0;
    unsigned int toReset;
    unsigned int topicChoice;
 
@@ -114,11 +113,14 @@ void startGame( void )
    printf( "%s", "# 5 ~~ Current Affairs\n" );
    printf( "%s", "\nEnter the number corresponding to the topic you want the quiz on :  " );
    scanf( "%u", &topicChoice );
+   printf( "\n\n%u\n\n", topicChoice );
 
-   switch( topicChoice )
-   {
-      case 1 :
-         
+   printf( "1) This is the question?\n" );
+   printf( "\t1. option 1\n\t2. option 2\n\t3. correct option\n\t4. option 4\n" );
+   printf( "%s", "Your answer :  " );
+   scanf( "%u", &answer );
+   if( answer == 3 ) {
+      ++count;
    }
 
    // Counting the number of correct answers
