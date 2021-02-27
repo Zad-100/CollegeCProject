@@ -10,16 +10,14 @@
 struct play {
    char name[ 20 ];
    int score;
-};
+}p;
 
 void highScore( void ); // function prototype
 void startGame( void );
 void gameHelp( void );
 
 int main( void )
-{
-   clrscr( );
-   
+{  
    unsigned int action = 0;
 
    printf( "%s", "\n\n\t\tACTION MENU\n" );
@@ -98,7 +96,7 @@ void startGame( void )
 
    FILE *fp;
 
-   if( ( fp = fopen( "score.txt", "a" ) ) = NULL ) {
+   if( ( fp = fopen( "score.txt", "a" ) ) == NULL ) {
       printf( "%s", "\nError in opening the file.\n" );
    }
 
@@ -143,7 +141,7 @@ void startGame( void )
    }
    else
    {
-      printf( "%s", "\n\nOkay, bye!\nHave ha brilliant day ahead!\n\n" );
+      printf( "%s", "\n\nOkay, bye!\nHave a brilliant day ahead!\n\n" );
       exit( 1 );
    }
 
