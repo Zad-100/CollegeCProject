@@ -102,4 +102,14 @@ void startGame( void )
 
    printf( "%s", "\n\nPlease, enter your name ( max 20 charaters including spaces ) :  " );
    scanf( "%s", p.name );
+
+   // Counting the number of correct answers
+   printf( "%s", "\n\nThank you so much for playing\n" );
+   printf( "Your score is %u points!\n\n", ( count * 5 ) );
+
+   p.score = ( count * 5 );
+
+   // Writting to the file
+   fprintf( fp, "%20s --> %4d", p.name, p.score );
+   fclose( fp );
 }
